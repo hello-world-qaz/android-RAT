@@ -1,0 +1,24 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="PointActivityStyle">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoDisplay">false</item>
+        <item name="android:windowDisablePreview">true</item>
+        <!-- 窗体没有边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 窗体不包含标题栏 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 窗体悬浮 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 不允许窗体背景变暗-->
+        <item name="android:backgroundDimEnabled">false</item>
+        <!-- 窗体切换无动画-->
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+</resources>

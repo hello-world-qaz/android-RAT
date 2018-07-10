@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="G:\android\team\609(good)\client\app\src\main\libs\commons-net-3.6.jar"
+        revision="27.0.3"
+        sha1="b71de00508dcb078d2b24b5fa7e538636de9b3da">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\commons-net-3.6-f7bd6142871496e1aadeca4671a27204a96d344a.jar" />
+    </item>
+    <item
+        jar="C:\Users\john\.gradle\caches\modules-2\files-2.1\org.reactivestreams\reactive-streams\1.0.2\323964c36556eb0e6209f65c1cef72b53b461ab8\reactive-streams-1.0.2.jar"
+        revision="27.0.3"
+        sha1="323964c36556eb0e6209f65c1cef72b53b461ab8">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\reactive-streams-1.0.2-d1e34899c6dba588948b963c10f67a8ff55e167a.jar" />
+    </item>
+    <item
+        jar="C:\Users\john\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.5.0\4b0bb6bfbecbdd42b97ff400af342bfe7f32bc83\okhttp-3.5.0.jar"
+        revision="27.0.3"
+        sha1="4b0bb6bfbecbdd42b97ff400af342bfe7f32bc83">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\okhttp-3.5.0-59b664d04345eb356347a69ac679dbb30226d1b8.jar" />
+    </item>
+    <item
+        jar="C:\Users\john\.android\build-cache\3fa818f76a2fc026f49fdb73aa2bb33fe0f83aaf\output\jars\classes.jar"
+        revision="27.0.3"
+        sha1="e6ea2f0dc82f983b01e41ecad1c213472e944c6e">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-d88b28411710cf074b9fe1434c60d0f3e7916ad0.jar" />
+    </item>
+    <item
+        jar="C:\Users\john\.android\build-cache\a8b7f3bdb225b8c21504fb1d95133e697a76d112\output\jars\classes.jar"
+        revision="27.0.3"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-51a07568dcc40ffff01c1582c1ea00166394dda6.jar" />
+    </item>
+    <item
+        jar="C:\Users\john\.gradle\caches\modules-2\files-2.1\io.socket\engine.io-client\0.8.3\854b49396e1e9f9bb0ab025062ddb49c4ed65ca1\engine.io-client-0.8.3.jar"
+        revision="27.0.3"
+        sha1="854b49396e1e9f9bb0ab025062ddb49c4ed65ca1">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\engine.io-client-0.8.3-29dd4e5853f53c561625aa9e11898f7acce9c5c2.jar" />
+    </item>
+    <item
+        jar="C:\Users\john\.gradle\caches\modules-2\files-2.1\io.reactivex.rxjava2\rxjava\2.1.16\14f0f8c3becc94ac89a8a84fc547dc228e9bd5a1\rxjava-2.1.16.jar"
+        revision="27.0.3"
+        sha1="14f0f8c3becc94ac89a8a84fc547dc228e9bd5a1">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\rxjava-2.1.16-3448ad64a63d2581e2c51716a1a90acefb05ee16.jar" />
+    </item>
+    <item
+        jar="C:\Users\john\.android\build-cache\71993017fa239b7edf62f8876f515b961d825620\output\jars\classes.jar"
+        revision="27.0.3"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-e8dbe9d92c654eaca1a03ef144512560687efe9a.jar" />
+    </item>
+    <item
+        jar="C:\Users\john\.android\build-cache\a8b7f3bdb225b8c21504fb1d95133e697a76d112\output\jars\libs\internal_impl-23.4.0.jar"
+        revision="27.0.3"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\internal_impl-23.4.0-f11cd6cef8a5bcde370b0df3401e3b94b7a7ac46.jar" />
+    </item>
+    <item
+        jar="C:\Users\john\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\26.0.0-alpha1\support-annotations-26.0.0-alpha1.jar"
+        revision="27.0.3"
+        sha1="023ee503b631f69511e335a061ea008f8da60f40">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\support-annotations-26.0.0-alpha1-7edc53c3bd6fcd8d63a798234a30977457893f48.jar" />
+    </item>
+    <item
+        jar="C:\Users\john\.android\build-cache\ebfdcc1bb2c12953c9f3f31f87875039483ef31d\output\jars\classes.jar"
+        revision="27.0.3"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-9279bc3691e7bfbb9133139dd71d5fb24cb541c8.jar" />
+    </item>
+    <item
+        jar="C:\Users\john\.android\build-cache\5e8b13c0700686cbd0ddd35f824c2661a4d80a0a\output\jars\classes.jar"
+        revision="27.0.3"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-ebbbda0d98d0c8e4449d836ba86acf8682033878.jar" />
+    </item>
+    <item
+        jar="C:\Users\john\.android\build-cache\5e760c61d5bd3c3196c04e92bf99560d61686eff\output\jars\classes.jar"
+        revision="27.0.3"
+        sha1="6f87db89d847cb6a482a6156d9a3efeabdd9d2e3">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-cebe210cb51dc91d4063b267dff8d08cd324c7ea.jar" />
+    </item>
+    <item
+        jar="C:\Users\john\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.11.0\840897fcd7223a8143f1d9b6f69714e7be34fd50\okio-1.11.0.jar"
+        revision="27.0.3"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\okio-1.11.0-f27b777cbd16e362c24ca3fe9230a153eecdaa1c.jar" />
+    </item>
+    <item
+        jar="C:\Users\john\.gradle\caches\modules-2\files-2.1\io.socket\socket.io-client\0.8.3\b30500232ff0668a47c9f91f02e6935457a52fb5\socket.io-client-0.8.3.jar"
+        revision="27.0.3"
+        sha1="b30500232ff0668a47c9f91f02e6935457a52fb5">
+        <dex dex="G:\android\team\609(good)\client\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\socket.io-client-0.8.3-703f338fc9d6349f80a522cfba5aa916d0d500b4.jar" />
+    </item>
+
+</items>
