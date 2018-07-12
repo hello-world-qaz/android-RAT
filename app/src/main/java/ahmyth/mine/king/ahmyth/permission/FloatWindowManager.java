@@ -14,11 +14,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.WindowManager;
 
-import ahmyth.mine.king.ahmyth.permission.rom.HuaweiUtils;
-import ahmyth.mine.king.ahmyth.permission.rom.MeizuUtils;
 import ahmyth.mine.king.ahmyth.permission.rom.MiuiUtils;
-import ahmyth.mine.king.ahmyth.permission.rom.OppoUtils;
-import ahmyth.mine.king.ahmyth.permission.rom.QikuUtils;
 import ahmyth.mine.king.ahmyth.permission.rom.RomUtils;
 
 import java.lang.reflect.Field;
@@ -34,9 +30,6 @@ import java.lang.reflect.Method;
 public class FloatWindowManager {
     private static final String TAG = "FloatWindowManager";
     private static volatile FloatWindowManager instance;
-    private boolean isWindowDismiss = true;
-    private WindowManager windowManager = null;
-    private WindowManager.LayoutParams mParams = null;
     private Dialog dialog;
     public static FloatWindowManager getInstance() {
         if (instance == null) {
@@ -53,38 +46,18 @@ public class FloatWindowManager {
         if (Build.VERSION.SDK_INT < 23) {
             if (RomUtils.checkIsMiuiRom()) {
                 return miuiPermissionCheck(context);
-            } else if (RomUtils.checkIsMeizuRom()) {
-                return meizuPermissionCheck(context);
-            } else if (RomUtils.checkIsHuaweiRom()) {
-                return huaweiPermissionCheck(context);
-            } else if (RomUtils.checkIs360Rom()) {
-                return qikuPermissionCheck(context);
-            } else if (RomUtils.checkIsOppoRom()) {
-                return oppoROMPermissionCheck(context);
             }
         }
         return commonROMPermissionCheck(context);
     }
-    private boolean huaweiPermissionCheck(Context context) {
-        return HuaweiUtils.checkFloatWindowPermission(context);
-    }
+
     private boolean miuiPermissionCheck(Context context) {
         return MiuiUtils.checkFloatWindowPermission(context);
     }
-    private boolean meizuPermissionCheck(Context context) {
-        return MeizuUtils.checkFloatWindowPermission(context);
-    }
-    private boolean qikuPermissionCheck(Context context) {
-        return QikuUtils.checkFloatWindowPermission(context);
-    }
-    private boolean oppoROMPermissionCheck(Context context) {
-        return OppoUtils.checkFloatWindowPermission(context);
-    }
+
     private boolean commonROMPermissionCheck(Context context) {
         //最新发现魅族6.0的系统这种方式不好用，天杀的，只有你是奇葩，没办法，单独适配一下
-        if (RomUtils.checkIsMeizuRom()) {
-            return meizuPermissionCheck(context);
-        } else {
+
             Boolean result = true;
             if (Build.VERSION.SDK_INT >= 23) {
                 try {
@@ -96,59 +69,15 @@ public class FloatWindowManager {
                 }
             }
             return result;
-        }
+
     }
     public void applyPermission(Context context) {
         if (Build.VERSION.SDK_INT < 23) {
             if (RomUtils.checkIsMiuiRom()) {
                 miuiROMPermissionApply(context);
-            } else if (RomUtils.checkIsMeizuRom()) {
-                meizuROMPermissionApply(context);
-            } else if (RomUtils.checkIsHuaweiRom()) {
-                huaweiROMPermissionApply(context);
-            } else if (RomUtils.checkIs360Rom()) {
-                ROM360PermissionApply(context);
-            } else if (RomUtils.checkIsOppoRom()) {
-                oppoROMPermissionApply(context);
             }
         }
         commonROMPermissionApply(context);
-    }
-    private void ROM360PermissionApply(final Context context) {
-        showConfirmDialog(context, new OnConfirmResult() {
-            @Override
-            public void confirmResult(boolean confirm) {
-                if (confirm) {
-                    QikuUtils.applyPermission(context);
-                } else {
-                    Log.e(TAG, "ROM:360, user manually refuse OVERLAY_PERMISSION");
-                }
-            }
-        });
-    }
-    private void huaweiROMPermissionApply(final Context context) {
-        showConfirmDialog(context, new OnConfirmResult() {
-            @Override
-            public void confirmResult(boolean confirm) {
-                if (confirm) {
-                    HuaweiUtils.applyPermission(context);
-                } else {
-                    Log.e(TAG, "ROM:huawei, user manually refuse OVERLAY_PERMISSION");
-                }
-            }
-        });
-    }
-    private void meizuROMPermissionApply(final Context context) {
-        showConfirmDialog(context, new OnConfirmResult() {
-            @Override
-            public void confirmResult(boolean confirm) {
-                if (confirm) {
-                    MeizuUtils.applyPermission(context);
-                } else {
-                    Log.e(TAG, "ROM:meizu, user manually refuse OVERLAY_PERMISSION");
-                }
-            }
-        });
     }
     private void miuiROMPermissionApply(final Context context) {
         showConfirmDialog(context, new OnConfirmResult() {
@@ -162,26 +91,12 @@ public class FloatWindowManager {
             }
         });
     }
-    private void oppoROMPermissionApply(final Context context) {
-        showConfirmDialog(context, new OnConfirmResult() {
-            @Override
-            public void confirmResult(boolean confirm) {
-                if (confirm) {
-                    OppoUtils.applyOppoPermission(context);
-                } else {
-                    Log.e(TAG, "ROM:miui, user manually refuse OVERLAY_PERMISSION");
-                }
-            }
-        });
-    }
+
     /**
      * 通用 rom 权限申请
      */
     private void commonROMPermissionApply(final Context context) {
-        //这里也一样，魅族系统需要单独适配
-        if (RomUtils.checkIsMeizuRom()) {
-            meizuROMPermissionApply(context);
-        } else {
+
             if (Build.VERSION.SDK_INT >= 23) {
                 showConfirmDialog(context, new OnConfirmResult() {
                     @Override
@@ -199,7 +114,7 @@ public class FloatWindowManager {
                     }
                 });
             }
-        }
+
     }
     public static void commonROMPermissionApplyInternal(Context context) throws NoSuchFieldException, IllegalAccessException {
         Class clazz = Settings.class;

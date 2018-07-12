@@ -1,6 +1,5 @@
 package ahmyth.mine.king.ahmyth;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.Service;
 import android.content.Context;

