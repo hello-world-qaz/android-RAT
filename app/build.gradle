@@ -41,6 +41,7 @@ dependencies {
     })
     compile 'com.mylhyl:acp:1.1.7'
     //compile files('libs/commons-net-3.6.jar')
+    compile 'com.laifeng:sopcast-sdk:1.0.4'
     compile 'com.xdandroid:hellodaemon:+'
     compile('io.socket:socket.io-client:0.8.3') {
         // excluding org.json which is provided by Android
@@ -48,4 +49,5 @@ dependencies {
     }
     testCompile 'junit:junit:4.12'
     compile files('src/main/libs/commons-net-3.6.jar')
+
 }

